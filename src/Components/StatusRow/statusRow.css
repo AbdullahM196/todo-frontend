@@ -1,0 +1,27 @@
+.statusRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+@media screen and (max-width: 951px) {
+  .statusRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .statusRow > .statusCard {
+    align-self: stretch;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .statusRow {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,20 @@
+#home {
+  .addTodo {
+    width: 42px;
+    height: 42px;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 90%;
+    right: 3%;
+    cursor: pointer;
+    svg {
+      font-size: 25px;
+    }
+  }
+}

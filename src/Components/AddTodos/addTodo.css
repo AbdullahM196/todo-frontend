@@ -1,0 +1,15 @@
+.formsTitle {
+  cursor: pointer;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 21px;
+  margin-right: 10px;
+}
+.active {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}

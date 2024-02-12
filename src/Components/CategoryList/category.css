@@ -1,0 +1,18 @@
+.editCategoryItems {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-size: 18px;
+
+  svg {
+    font-size: 20px;
+    flex: 1;
+  }
+  span {
+    flex: 8;
+  }
+}
