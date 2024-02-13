@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../Components/Loading/Loding";
 import { Form } from "react-bootstrap";
 
 export default function Login() {
@@ -14,7 +13,7 @@ export default function Login() {
   const MySwal = withReactContent(Swal);
   const dispatch = useDispatch();
   const user = useSelector((state) => selectUser(state));
-  const { status, error } = useSelector((state) => state.auth);
+  const { status } = useSelector((state) => state.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -47,7 +46,6 @@ export default function Login() {
         setEmail("");
         setPassword("");
         navigate("/");
-        // console.log("success");
       } catch (err) {
         MySwal.fire({
           icon: "error",

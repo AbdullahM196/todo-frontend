@@ -17,7 +17,6 @@ export const addFavorite = createAsyncThunk(
   async (todoId) => {
     try {
       const response = await axiosInstance.post("favorite/add", { todoId });
-      console.log(response);
       return response.data;
     } catch (err) {
       return Promise.reject(err.response.data.message);
@@ -57,7 +56,6 @@ const favoriteSlice = createSlice({
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        // console.log(action.payload.todoes);
         favoritesAdapter.setAll(state, action.payload.todoes);
       })
       .addCase(fetchFavorites.rejected, (state, action) => {
@@ -71,7 +69,6 @@ const favoriteSlice = createSlice({
       .addCase(addFavorite.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        console.log(action.payload);
         favoritesAdapter.addOne(state, action.payload);
       })
       .addCase(addFavorite.rejected, (state, action) => {
@@ -85,7 +82,6 @@ const favoriteSlice = createSlice({
       .addCase(removeFavorite.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        console.log(action.payload);
         favoritesAdapter.removeOne(state, action.payload);
       })
       .addCase(removeFavorite.rejected, (state, action) => {

@@ -48,7 +48,6 @@ export default function AddTodo() {
         formData.append("categoryId", category);
       }
       try {
-        console.log(formData);
         await dispatch(addNewTodo(formData)).unwrap();
       } catch (err) {
         MySwal.fire({

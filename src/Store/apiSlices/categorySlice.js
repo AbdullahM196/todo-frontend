@@ -72,7 +72,7 @@ const categorySlice = createSlice({
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        // console.log(action.payload);
+
         categoryAdapter.upsertMany(state, action.payload);
       })
       .addCase(fetchCategories.rejected, (state, action) => {
@@ -98,7 +98,6 @@ const categorySlice = createSlice({
       .addCase(updateCategory.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        console.log(action.payload);
         categoryAdapter.upsertOne(state, action.payload);
       })
       .addCase(updateCategory.rejected, (state, action) => {

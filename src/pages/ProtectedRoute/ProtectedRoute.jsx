@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../Store/apiSlices/userSlice";
 import Swal from "sweetalert2";
@@ -7,12 +8,22 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { fetchTodos } from "../../Store/apiSlices/TodosSlice";
 import { fetchCategories } from "../../Store/apiSlices/categorySlice";
 import { fetchFavorites } from "../../Store/apiSlices/favoriteSlice";
+
 export default function ProtectedRoute() {
   const dispatch = useDispatch();
   const MySwal = withReactContent(Swal);
   const { status, error } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => selectUser(state));
   const location = useLocation();
+
+  useEffect(() => {
+    if (status === "succeeded" || user?.userName) {
+      dispatch(fetchTodos());
+      dispatch(fetchCategories());
+      dispatch(fetchFavorites());
+    }
+  }, [dispatch, status, user]);
+
   if (status === "loading") {
     return (
       <div
@@ -36,9 +47,6 @@ export default function ProtectedRoute() {
     });
     return <Navigate to="/auth/" replace />;
   } else if (status === "succeeded" || user?.userName) {
-    dispatch(fetchTodos());
-    dispatch(fetchCategories());
-    dispatch(fetchFavorites());
     return <Outlet />;
   }
 }

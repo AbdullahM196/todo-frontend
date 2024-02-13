@@ -13,7 +13,6 @@ const initialState = {
 export const register = createAsyncThunk("register", async (user) => {
   try {
     const response = await axiosInstance.post("user/register", user);
-    console.log(response.data);
     return response.data;
   } catch (err) {
     return Promise.reject(err.response.data.message);
@@ -77,7 +76,6 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // console.log(action.payload);
         state.user = action.payload;
         state.error = null;
       })

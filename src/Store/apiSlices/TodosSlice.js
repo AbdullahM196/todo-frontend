@@ -66,7 +66,6 @@ const todoSlice = createSlice({
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        // console.log(action.payload);
         todoAdapter.setAll(state, action.payload);
       })
       .addCase(fetchTodos.rejected, (state, action) => {
@@ -80,7 +79,6 @@ const todoSlice = createSlice({
       .addCase(addNewTodo.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        console.log(action.payload.todo);
         todoAdapter.addOne(state, action.payload.todo);
       })
       .addCase(addNewTodo.rejected, (state, action) => {
@@ -94,7 +92,6 @@ const todoSlice = createSlice({
       .addCase(updateExistingTodo.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        console.log(action.payload.updatedTodo);
         todoAdapter.upsertOne(state, action.payload.updatedTodo);
       })
       .addCase(updateExistingTodo.rejected, (state, action) => {
@@ -108,8 +105,6 @@ const todoSlice = createSlice({
       .addCase(deleteTodo.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        console.log(action.payload);
-        console.log(action.payload.deletedTodo._id);
         const id = action.payload.deletedTodo._id;
         todoAdapter.removeOne(state, id);
       })

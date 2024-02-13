@@ -30,7 +30,6 @@ export default function CategoryCard({
   const [editCat, SetEditCat] = useState(false);
   const [updatedCategory, setUpdateCategory] = useState(category.title);
   async function handleUpdateCategory() {
-    console.log(updatedCategory);
     if (updateCategory !== "") {
       await dispatch(
         updateCategory({ id: id, title: updatedCategory })

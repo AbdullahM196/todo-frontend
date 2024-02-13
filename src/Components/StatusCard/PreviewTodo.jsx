@@ -13,8 +13,8 @@ export default function PreviewTodo({ show, setShow, todoId }) {
         <Modal.Title>{todo.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {todo.img.url && (
-          <img className="w-100 h-100" src={todo.img.url} alt={todo.title} />
+        {todo?.img?.url && (
+          <img className="w-100 h-100" src={todo?.img?.url} alt={todo.title} />
         )}
         <p className="my-2 fs-3 fw-bold"> {todo.body}</p>
         <p className="my-2 fs-4 fw-medium">Status: {todo.status}</p>

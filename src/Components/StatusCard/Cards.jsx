@@ -90,7 +90,7 @@ export default function Cards({ data }) {
             />
           )}
         </span>
-        {data.img.url && <img src={data.img.url} alt={data.title} />}
+        {data.img?.url && <img src={data.img?.url} alt={data.title} />}
         <h3>{data.title.substring(0, 40)}</h3>
         {showMenu && (
           <div className="menu" onClick={(evt) => evt.stopPropagation()}>

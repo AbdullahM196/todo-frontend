@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./forms.css";
-import { register, selectUser } from "../../Store/apiSlices/userSlice";
+import { register } from "../../Store/apiSlices/userSlice";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -10,12 +10,8 @@ import Loading from "../../Components/Loading/Loding";
 
 export default function Register() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => selectUser(state));
-  console.log(user);
   const registerStatus = useSelector((state) => state.auth.status);
-  console.log(registerStatus);
   const registerError = useSelector((state) => state.auth.error);
-  console.log(registerError);
   const navigate = useNavigate();
   const MySwal = withReactContent(Swal);
   const [userName, setUserName] = useState("");
@@ -70,7 +66,6 @@ export default function Register() {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
-        console.log("success");
         navigate("/");
       } catch (err) {
         MySwal.fire({
@@ -78,10 +73,8 @@ export default function Register() {
           title: "Oops...",
           text: err.message,
         });
-        console.error(err.message);
       }
     }
-    console.log(canSave);
   }
   function togglePassword() {
     setShowPassword(!showPassword);
