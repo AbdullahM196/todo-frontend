@@ -46,7 +46,7 @@ export const deleteTodo = createAsyncThunk("todos/deleteTodo", async (id) => {
 });
 
 const todoAdapter = createEntityAdapter({
-  selectId: (todo) => todo._id,
+  selectId: (todo) => todo?._id,
 });
 
 const initialState = todoAdapter.getInitialState({
@@ -66,6 +66,7 @@ const todoSlice = createSlice({
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
+
         todoAdapter.setAll(state, action.payload);
       })
       .addCase(fetchTodos.rejected, (state, action) => {

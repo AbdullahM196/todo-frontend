@@ -36,7 +36,7 @@ export const removeFavorite = createAsyncThunk(
 );
 const favoritesAdapter = createEntityAdapter({
   selectId: (todo) => {
-    return todo;
+    if (todo) return todo;
   },
 });
 const initialState = favoritesAdapter.getInitialState({
@@ -56,7 +56,9 @@ const favoriteSlice = createSlice({
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.error = null;
-        favoritesAdapter.setAll(state, action.payload.todoes);
+        if (action.payload?.todoes) {
+          favoritesAdapter.setAll(state, action.payload?.todoes);
+        }
       })
       .addCase(fetchFavorites.rejected, (state, action) => {
         state.status = "failed";
